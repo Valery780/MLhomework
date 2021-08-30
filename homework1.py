@@ -30,15 +30,13 @@ if __name__ == '__main__':
 print("Everything passed")
 
 # №4
-a = int(input())
-def area():
-    area = str(a ** 2)
-    return area
-print("Square area: " + area())
-
+area = int(input('Enter a square area: '))
+def sq_side():
+    side = str(area ** 0.5)
+    print("Square side: " + side)
 if __name__ == '__main__':
-    area()
-
+    sq_side()
+    
 # №5
 a = int(input())
 b = int(input())
@@ -68,23 +66,26 @@ def credit():
 if __name__ == '__main__':
     credit()
 
-# №7 (№11)
+# №7 (№11)(changed)
 def calculator():
     while True:
         x = float(input("x = "))
         y = float(input("y = "))
-        if x >= 0 and y >= 0:
-                print('%.2f + %.2f = %.2f' % (x, y, x+y))
-                print('%.2f - %.2f = %.2f' % (x, y, x-y))
-                print('%.2f * %.2f = %.2f' % (x, y, x*y))
-                if y != 0:
-                    print('%.2f / %.2f = %.2f' % (x, y, x/y))
-                else:
-                    print("Деление на ноль!")
+        if x >= 0 and y != 0:
+            print('%.2f + %.2f = %.2f' % (x, y, x+y))
+            print('%.2f - %.2f = %.2f' % (x, y, x-y))
+            print('%.2f * %.2f = %.2f' % (x, y, x*y))
+            print('%.2f / %.2f = %.2f' % (x, y, x/y))
+        elif x <= 0 and y != 0:
+            print('%.2f + %.2f = %.2f' % (x, y, x + y))
+            print('%.2f - %.2f = %.2f' % (x, y, x - y))
+            print('%.2f * %.2f = %.2f' % (x, y, x * y))
+            print('%.2f / %.2f = %.2f' % (x, y, x / y))
+        else:
+            print("Деление на ноль!")
 
 if __name__ == '__main__':
     calculator()
-
 # №8
 import random
 from random import randint
@@ -151,8 +152,8 @@ def main():
 if __name__ == '__main__':
     main()
     
-# №13
-def main():
+# №13(changed)
+def mob_rate():
     a = input('Количество минут: ')
     b = input('Количество смс: ')
     a = float(a)
@@ -161,38 +162,51 @@ def main():
     if a > 0 and a <= 100 and b > 0 and b <= 30:
         c = a * 0.3
         d = b * 0.25
-        print("Стоимость тарифа: " + str(c + d))
+        print("Стоимость тарифа: " + str(c + d) + "(грн)")
+    elif a > 0 and a > 100 and b > 0 and b > 30:
+        c = a * 0.3
+        d = b * 0.25
+        e = (c + d) - 37.5
+        print("Стоимость тарифа: " + str(c + d) + "(грн)")
+        print("Разница: " + str(e) + "(грн)")
     else:
-        print("Больше тарифного пакета")
+        c = a * 0.3
+        d = b * 0.25
+        print("Стоимость тарифа: " + str(c + d) + "(грн)")
+        # if a > 100 or b > 30
 
 if __name__ == '__main__':
-    main()
+    mob_rate()
+
     
-# №14
-def main():
+# №14(changed)
+def letter():
     x = input('Введите букву: ')
 
-    if x != 'а' or 'е' or 'ё' or 'и' or 'о' or 'у' or 'ы' or 'э' or 'ю' or 'я':
-        print("Это согласная буква")
-    else:
+    if x in 'aieouy':
         print("Это гласная буква")
-        
+    elif x in 'AIEOUY':
+        print("Это гласная буква")
+    else:
+        print("Это согласная буква")
 if __name__ == '__main__':
-    main()
+    letter()
     
- # №15
-def main():
+ # №15 (changed)
+def triangle():
     a = int(input("a = "))
     b = int(input("b = "))
     c = int(input("c = "))
 
-    if a != b and a != c and b != c:
+    if a + b <= c or a + c <= b or b + c <= a:
+        print("Треугольник не существует")
+    elif a != b and a != c and b != c:
         print("Разносторонний")
     elif a == b == c:
         print("Равносторонний")
     else:
         print("Равнобедренный")
 if __name__ == '__main__':
-    main()
+    triangle()
     
     
